@@ -137,17 +137,25 @@ int main(int argc, char **argv)
   // Moving to a pose goal
   // ^^^^^^^^^^^^^^^^^^^^^
   //
-  // Moving to a pose goal is similar to the step above
-  // except we now use the move() function. Note that
-  // the pose goal we had set earlier is still active
-  // and so the robot will try to move to that goal. We will
-  // not use that function in this tutorial since it is
-  // a blocking function and requires a controller to be active
+  // If we want to execute the already planned plan, we
+  // use the execute(my_plan) function. Planning and 
+  // moving to a pose goal can be done in one call 
+  // similar to the step above except we now use 
+  // the move() function. Note that the pose goal we 
+  // had set earlier is still active and so the robot will 
+  // try to move to that goal, but using a different plan. We will
+  // not use these functions in this tutorial since they are
+  // blocking functions and require a controller to be active
   // and report success on execution of a trajectory.
 
-  /* Uncomment below line when working with a real robot */
-  /* move_group.move() */
-
+  /* Uncomment below line when working with a real robot 
+     to execute the already planned plan */
+  /* bool success = (move_group.execute(my_plan) == moveit::planning_interface::MoveItErrorCode::SUCCESS);*/
+  
+  /* Uncomment below line when working with a real robot 
+     to create a new plan and execute it in one call */
+  /* bool success = (move_group.move() == moveit::planning_interface::MoveItErrorCode::SUCCESS); */
+  
   // Planning to a joint-space goal
   // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   //
